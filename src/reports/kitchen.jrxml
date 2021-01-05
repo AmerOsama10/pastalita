@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="235" pageHeight="864" columnWidth="209" leftMargin="13" rightMargin="13" topMargin="13" bottomMargin="13" uuid="cad44d53-af5b-4dfc-b6ce-216f903d055f">
+	<property name="ireport.zoom" value="2.1435888100000016"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[SELECT
+     dates.`order_id` AS dates_order_id,
+     items.`item_name` AS items_item_name,
+     items.`item_size` AS items_item_size,
+     items.`item_cost` AS items_item_cost,
+     orders.`order_quantity` AS orders_order_quantity,
+     dates.`order_date` AS dates_order_date
+FROM
+     `items` items INNER JOIN `orders` orders ON items.`item_id` = orders.`item_id`
+     INNER JOIN `dates` dates ON orders.`order_id` = dates.`order_id`
+WHERE
+     dates.order_id = ( SELECT MAX(order_id) FROM `dates` )]]>
+	</queryString>
+	<field name="dates_order_id" class="java.lang.Integer"/>
+	<field name="items_item_name" class="java.lang.String"/>
+	<field name="items_item_size" class="java.lang.String"/>
+	<field name="items_item_cost" class="java.lang.Float"/>
+	<field name="orders_order_quantity" class="java.lang.Integer"/>
+	<field name="dates_order_date" class="java.lang.String"/>
+	<title>
+		<band height="43" splitType="Stretch">
+			<textField>
+				<reportElement x="146" y="0" width="37" height="30" uuid="a88fbb39-4492-4a40-a6a0-804041a3dbbf"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<leftPen lineWidth="1.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dates_order_id}%150]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd.MMM - hh:mm aaa">
+				<reportElement x="0" y="23" width="145" height="20" uuid="41d021e3-86bc-4f73-8836-41c709fe509f"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="36" y="1" width="31" height="15" forecolor="#736343" uuid="1cf9fe75-0545-4325-888f-ed866cf8399e"/>
+				<box>
+					<pen lineWidth="2.0"/>
+					<topPen lineWidth="2.0"/>
+					<leftPen lineWidth="2.0"/>
+					<bottomPen lineWidth="2.0"/>
+					<rightPen lineWidth="2.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="10" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[السعر]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="67" y="1" width="110" height="15" forecolor="#736343" uuid="3292ff46-1d51-40dc-85d6-3356e4bd771b"/>
+				<box>
+					<pen lineWidth="2.0"/>
+					<topPen lineWidth="2.0"/>
+					<leftPen lineWidth="2.0"/>
+					<bottomPen lineWidth="2.0"/>
+					<rightPen lineWidth="2.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="10" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[اسم الصنف]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="177" y="1" width="20" height="15" forecolor="#736343" uuid="d462578c-a803-4a75-814e-0663cc290224"/>
+				<box>
+					<pen lineWidth="2.0"/>
+					<topPen lineWidth="2.0"/>
+					<leftPen lineWidth="2.0"/>
+					<bottomPen lineWidth="2.0"/>
+					<rightPen lineWidth="2.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="10" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[الكميه]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1" width="36" height="15" forecolor="#736343" uuid="f82e2bf2-ea76-492d-a4cc-710c4a3fb841"/>
+				<box>
+					<pen lineWidth="2.0"/>
+					<topPen lineWidth="2.0"/>
+					<leftPen lineWidth="2.0"/>
+					<bottomPen lineWidth="2.0"/>
+					<rightPen lineWidth="2.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="10" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[الاجمالي]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="200" height="15" uuid="66516dce-3f82-49b7-8682-5a0f93c33855"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="36" height="15" uuid="86589843-ea65-4775-bb19-66a5999623c9"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{items_item_cost}*$F{orders_order_quantity}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="67" y="0" width="110" height="15" uuid="a24722b7-2e9f-4bb4-aec3-9a15b1b0ddff"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{items_item_name}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="36" y="0" width="31" height="15" uuid="423a026a-0d9b-4b69-8683-af5648cf23df"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{items_item_cost}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="177" y="0" width="20" height="15" uuid="4ee73848-ded1-490b-bbee-ae65f119e884"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{orders_order_quantity}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>

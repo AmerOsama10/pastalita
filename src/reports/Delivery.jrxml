@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="232" pageHeight="864" columnWidth="206" leftMargin="13" rightMargin="13" topMargin="13" bottomMargin="13" uuid="cad44d53-af5b-4dfc-b6ce-216f903d055f">
+	<property name="ireport.zoom" value="2.8531167061100033"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="389"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[SELECT
+     cashiers.`cashier_name` AS cashiers_cashier_name,
+     clients.`client_name` AS clients_client_name,
+     clients.`client_phone` AS clients_client_phone,
+     clients.`client_address` AS clients_client_address,
+     clients.`client_notes` AS clients_client_notes,
+     items.`item_name` AS items_item_name,
+     items.`item_size` AS items_item_size,
+     items.`item_cost` AS items_item_cost,
+     orders.`order_quantity` AS orders_order_quantity,
+     dates.`order_egmaly` AS dates_order_egmaly,
+     dates.`order_service` AS dates_order_service,
+     dates.`order_id` AS dates_order_id,
+     dates.`order_total` AS dates_order_total
+FROM
+     `cashiers` cashiers INNER JOIN `dates` dates ON cashiers.`cashier_id` = dates.`cashier_id`
+     INNER JOIN `clients` clients ON dates.`client_id` = clients.`client_id`
+     INNER JOIN `orders` orders ON dates.`order_id` = orders.`order_id`
+     INNER JOIN `items` items ON orders.`item_id` = items.`item_id`
+WHERE
+     dates.order_id = ( SELECT MAX(order_id) FROM `dates` )]]>
+	</queryString>
+	<field name="cashiers_cashier_name" class="java.lang.String"/>
+	<field name="clients_client_name" class="java.lang.String"/>
+	<field name="clients_client_phone" class="java.lang.String"/>
+	<field name="clients_client_address" class="java.lang.String"/>
+	<field name="clients_client_notes" class="java.lang.String"/>
+	<field name="items_item_name" class="java.lang.String"/>
+	<field name="items_item_size" class="java.lang.String"/>
+	<field name="items_item_cost" class="java.lang.Float"/>
+	<field name="orders_order_quantity" class="java.lang.Integer"/>
+	<field name="dates_order_egmaly" class="java.lang.Float"/>
+	<field name="dates_order_service" class="java.lang.Integer"/>
+	<field name="dates_order_id" class="java.lang.Integer"/>
+	<field name="dates_order_total" class="java.lang.Float"/>
+	<title>
+		<band height="203" splitType="Stretch">
+			<textField>
+				<reportElement x="11" y="29" width="43" height="33" uuid="1f17498a-d6f2-45d6-8bbe-d0e0930f9594"/>
+				<box>
+					<pen lineWidth="2.0" lineStyle="Solid"/>
+					<topPen lineWidth="2.0" lineStyle="Solid"/>
+					<leftPen lineWidth="2.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="2.0" lineStyle="Solid"/>
+					<rightPen lineWidth="2.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="22" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dates_order_id}%150]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-16" y="160" width="156" height="20" uuid="9a501ff5-b1f0-4cba-bdda-0f185af31bfd"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cashiers_cashier_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="140" y="82" width="53" height="20" uuid="afb93714-9267-473d-ad48-d254ebc78ad3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الهاتف :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="102" width="52" height="20" uuid="fd1c57bf-baad-42fb-8286-564ab56cf4ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[العنوان :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="125" width="55" height="20" uuid="37e5f3c9-efb8-4175-8fc7-5190142f1758"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ملاحظات :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="-16" y="62" width="156" height="20" uuid="9c316c54-c8c5-40bd-a062-d1aa2c78cf31"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clients_client_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-16" y="82" width="156" height="20" uuid="30f5158c-080a-4501-bfbe-206e55dabbfa"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clients_client_phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-16" y="102" width="156" height="20" uuid="d39bd64b-083b-4e58-9c85-d3606be181a5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clients_client_address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-16" y="125" width="153" height="35" uuid="83b86631-fb64-4f57-a5ea-d037fa06d712"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clients_client_notes}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd.MMM - hh:mm aaa">
+				<reportElement x="3" y="180" width="159" height="20" uuid="d3a5f92c-e7e7-4506-bdfb-88b40dd406be"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="199" width="125" height="1" uuid="7b395a64-061e-4872-abe0-9e93b91d7b33"/>
+			</line>
+			<staticText>
+				<reportElement x="140" y="62" width="52" height="20" uuid="62c39803-1cd4-4256-9280-c07da5167d57"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[العميل :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="160" width="52" height="20" uuid="4c26f96c-8bf8-495f-9918-4b6c5faf034e"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الكاشير :]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement x="54" y="0" width="108" height="40" backcolor="#000000" uuid="4d73bdb8-61fb-44a4-9c68-9c4c83539b67"/>
+			</ellipse>
+			<staticText>
+				<reportElement x="54" y="0" width="108" height="40" forecolor="#FFFFFF" uuid="7903eaff-d75c-486d-a49f-f900c2c4eea7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pastalita]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="37" y="1" width="33" height="15" forecolor="#736343" uuid="1cf9fe75-0545-4325-888f-ed866cf8399e"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="10" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[السعر]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="70" y="1" width="102" height="15" forecolor="#736343" uuid="3292ff46-1d51-40dc-85d6-3356e4bd771b"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="10" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[اسم الصنف]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="172" y="1" width="20" height="15" forecolor="#736343" uuid="d462578c-a803-4a75-814e-0663cc290224"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="10" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[الكميه]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1" width="37" height="15" forecolor="#736343" uuid="7e13723a-adb2-4d82-85c5-813113c3ef28"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="10" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[الاجمالي]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="200" height="15" uuid="66516dce-3f82-49b7-8682-5a0f93c33855"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="37" y="0" width="33" height="15" uuid="86589843-ea65-4775-bb19-66a5999623c9"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{items_item_cost}*$F{orders_order_quantity}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="70" y="0" width="102" height="15" uuid="a24722b7-2e9f-4bb4-aec3-9a15b1b0ddff"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{items_item_name}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="172" y="0" width="20" height="15" uuid="4ee73848-ded1-490b-bbee-ae65f119e884"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{orders_order_quantity}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="37" height="15" uuid="a92b75ba-cf06-4d5b-83e3-866df2b36c3d"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{items_item_cost}*$F{orders_order_quantity}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<summary>
+		<band height="110">
+			<textField pattern="#,##0.00">
+				<reportElement mode="Opaque" x="48" y="45" width="50" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="562ad3bb-aa09-4b88-84c4-337db929fec6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dates_order_total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="48" y="5" width="50" height="20" uuid="b8fe4873-af03-409f-ad59-10312275c3a2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dates_order_egmaly}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="103" y="45" width="52" height="20" uuid="a492efdf-bd73-4da3-8753-1f857704a6d8"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الصافي :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="48" y="25" width="50" height="20" uuid="fbdc9c22-2776-42dc-9469-351240bd0f1c"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dates_order_service}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="103" y="5" width="53" height="20" uuid="2d8d0489-390d-48df-9b3a-88d3fe91d661"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الاجمالي :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="103" y="25" width="53" height="20" uuid="046e41fe-8b36-4d4c-bc8e-71274166ecb9"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[دليفري :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="90" width="192" height="20" backcolor="#666666" uuid="2fd34d27-2a4d-4b9a-99b8-6cb8575736b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[01009060677  -  01276299855]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="70" width="192" height="20" backcolor="#666666" uuid="aafcca31-a70c-4511-9099-256e3439f642"/>
+				<textElement textAlignment="Center">
+					<font fontName="Algerian" size="12"/>
+				</textElement>
+				<text><![CDATA[Happy to serve You]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
