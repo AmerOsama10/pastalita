@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="226" pageHeight="864" columnWidth="200" leftMargin="13" rightMargin="13" topMargin="13" bottomMargin="13" uuid="cad44d53-af5b-4dfc-b6ce-216f903d055f">
 	<property name="ireport.zoom" value="3.4522712143931042"/>
-	<property name="ireport.x" value="14"/>
-	<property name="ireport.y" value="556"/>
+	<property name="ireport.x" value="145"/>
+	<property name="ireport.y" value="137"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -25,7 +25,8 @@
      items.`item_name` AS items_item_name,
      items.`item_size` AS items_item_size,
      items.`item_cost` AS items_item_cost,
-     dates.`order_total` AS dates_order_total
+     dates.`order_total` AS dates_order_total,
+     dates.`order_date` AS dates_order_date
 FROM
      `cashiers` cashiers INNER JOIN `dates` dates ON cashiers.`cashier_id` = dates.`cashier_id`
      INNER JOIN `orders` orders ON dates.`order_id` = orders.`order_id`
@@ -43,6 +44,7 @@ WHERE
 	<field name="items_item_size" class="java.lang.String"/>
 	<field name="items_item_cost" class="java.lang.Float"/>
 	<field name="dates_order_total" class="java.lang.Float"/>
+	<field name="dates_order_date" class="java.lang.String"/>
 	<title>
 		<band height="126" splitType="Stretch">
 			<textField>
@@ -78,7 +80,7 @@ WHERE
 			</line>
 			<textField pattern="EEEEE dd.MMM - hh:mm aaa">
 				<reportElement x="7" y="105" width="149" height="20" uuid="6f72c6cf-4104-4051-a0a5-1f16c6993a58"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{dates_order_date}]]></textFieldExpression>
 			</textField>
 			<ellipse>
 				<reportElement x="47" y="8" width="108" height="37" backcolor="#000000" uuid="0f3e7a94-64fa-47d0-b562-396ba04df0cf"/>

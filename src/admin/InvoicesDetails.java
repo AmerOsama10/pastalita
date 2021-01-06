@@ -394,7 +394,7 @@ catch (JRException ex) {
     printRequestAttributeSet.add(new Copies(1));
     //PrinterName printerName = new PrinterName("Microsoft XPS Document Writer", null);
 
-      PrinterName printerName = new PrinterName("XP-80C (copy 5)", null); //gets printer 
+      PrinterName printerName = new PrinterName("XP-80C (copy 2)", null); //gets printer 
 
 
     PrintServiceAttributeSet printServiceAttributeSet = new HashPrintServiceAttributeSet();

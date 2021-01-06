@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="232" pageHeight="864" columnWidth="206" leftMargin="13" rightMargin="13" topMargin="13" bottomMargin="13" uuid="cad44d53-af5b-4dfc-b6ce-216f903d055f">
 	<property name="ireport.zoom" value="2.8531167061100033"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="389"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -161,7 +161,7 @@ WHERE
 	<columnHeader>
 		<band height="16" splitType="Stretch">
 			<staticText>
-				<reportElement style="Column header" x="37" y="1" width="33" height="15" forecolor="#736343" uuid="1cf9fe75-0545-4325-888f-ed866cf8399e"/>
+				<reportElement style="Column header" x="31" y="1" width="31" height="15" forecolor="#736343" uuid="1cf9fe75-0545-4325-888f-ed866cf8399e"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -175,7 +175,7 @@ WHERE
 				<text><![CDATA[السعر]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="70" y="1" width="102" height="15" forecolor="#736343" uuid="3292ff46-1d51-40dc-85d6-3356e4bd771b"/>
+				<reportElement style="Column header" x="62" y="1" width="108" height="15" forecolor="#736343" uuid="3292ff46-1d51-40dc-85d6-3356e4bd771b"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -189,7 +189,7 @@ WHERE
 				<text><![CDATA[اسم الصنف]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="172" y="1" width="20" height="15" forecolor="#736343" uuid="d462578c-a803-4a75-814e-0663cc290224"/>
+				<reportElement style="Column header" x="170" y="1" width="20" height="15" forecolor="#736343" uuid="d462578c-a803-4a75-814e-0663cc290224"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -203,7 +203,7 @@ WHERE
 				<text><![CDATA[الكميه]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="1" width="37" height="15" forecolor="#736343" uuid="7e13723a-adb2-4d82-85c5-813113c3ef28"/>
+				<reportElement x="0" y="1" width="31" height="15" forecolor="#736343" uuid="7e13723a-adb2-4d82-85c5-813113c3ef28"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -223,7 +223,7 @@ WHERE
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="200" height="15" uuid="66516dce-3f82-49b7-8682-5a0f93c33855"/>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="37" y="0" width="33" height="15" uuid="86589843-ea65-4775-bb19-66a5999623c9"/>
+					<reportElement style="Detail" x="31" y="0" width="31" height="15" uuid="86589843-ea65-4775-bb19-66a5999623c9"/>
 					<box>
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -236,7 +236,7 @@ WHERE
 					<textFieldExpression><![CDATA[$F{items_item_cost}*$F{orders_order_quantity}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="70" y="0" width="102" height="15" uuid="a24722b7-2e9f-4bb4-aec3-9a15b1b0ddff"/>
+					<reportElement style="Detail" x="62" y="0" width="108" height="15" uuid="a24722b7-2e9f-4bb4-aec3-9a15b1b0ddff"/>
 					<box>
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -249,7 +249,7 @@ WHERE
 					<textFieldExpression><![CDATA[$F{items_item_name}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="172" y="0" width="20" height="15" uuid="4ee73848-ded1-490b-bbee-ae65f119e884"/>
+					<reportElement style="Detail" x="170" y="0" width="20" height="15" uuid="4ee73848-ded1-490b-bbee-ae65f119e884"/>
 					<box>
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
@@ -262,7 +262,7 @@ WHERE
 					<textFieldExpression><![CDATA[$F{orders_order_quantity}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="0" y="0" width="37" height="15" uuid="a92b75ba-cf06-4d5b-83e3-866df2b36c3d"/>
+					<reportElement style="Detail" x="0" y="0" width="31" height="15" uuid="a92b75ba-cf06-4d5b-83e3-866df2b36c3d"/>
 					<box>
 						<topPen lineWidth="1.0"/>
 						<leftPen lineWidth="1.0"/>
